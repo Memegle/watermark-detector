@@ -10,6 +10,10 @@ Codes to train a neural network that performs the task of watermark detection
 
 Codes to execute our trained model on predicting the watermark status of incoming images
 
+### RandomImageGenerator.py
+
+Codes to generate images with random artificial watermarks for supplemental training/testing
+
 ### data
 #### images
 
