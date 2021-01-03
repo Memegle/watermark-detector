@@ -1,3 +1,6 @@
+import os
+from RetinaNet import RetinaNet
+
 class WatermarkDetectron:
 
     """

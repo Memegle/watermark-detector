@@ -1,8 +1,19 @@
+import os
+import re
+import zipfile
+
+import numpy as np
+import tensorflow as tf
+from tensorflow import keras
+
+import matplotlib.pyplot as plt
+
 class RetinaNet():
 
     def __init__(self, dataset, num_images=200, pretrained=None):
-
+        
         # TODO
+        pass
 
     """
     Load data from dataset on google drive (finish train-test split in this method)
