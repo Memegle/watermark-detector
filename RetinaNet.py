@@ -1,19 +1,11 @@
+from tools.my_dataset import MyDataset 
+from torch.utils.data import DataLoader
+
 class RetinaNet():
 
     def __init__(self, dataset, num_images=200, pretrained=None):
 
         # TODO
-
-    """
-    Load data from dataset on google drive (finish train-test split in this method)
-    Split into images and labels
-    num_images = number of images per label (e.g. 200 positive and 200 negative)
-    """
-    def __load_data(self, dataset, num_images=200):
-
-        # TODO
-
-        return ...
     
     """
     Helper method for training
@@ -24,13 +16,17 @@ class RetinaNet():
 
         return ...
 
-    ### DEFINE METHODS FOR TRAINING THE NET
+### train the net below
+if __name__ == "__main__":
 
     """
-    Report the accuracy of classification
+    Load data from dataset on google drive (finish train-test split in this method)
+    Split into images and labels
+    num_images = number of images per label (e.g. 200 positive and 200 negative)
     """
-    def evaluate(self, images, labels):
+    train_data = MyDataset(data_dir=..., mode="train")
+    valid_data = MyDataset(data_dir=..., mode="valid")
 
-        # TODO
+    train_loader = DataLoader(dataset=train_data, batch_size=...)
+    valid_loader = DataLoader(dataset=valid_data, batch_size=...)
 
-        return ...
