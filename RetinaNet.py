@@ -1,5 +1,3 @@
-from tools.my_dataset import MyDataset 
-from torch.utils.data import DataLoader
 import os
 import re
 import zipfile
