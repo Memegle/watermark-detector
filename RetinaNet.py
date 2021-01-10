@@ -24,16 +24,22 @@ class RetinaNet():
 
         # TODO
 
-        return ...
+        return None
     
     """
     Helper method for training
     """
-    def __resize_image(self, height=200, width=200):
-
-        # TODO
-
-        return ...
+    def __resize_image(self, img_path, width=200, height=200):
+        img = Image.open(img_path)
+        old_width, old_height = img.size
+        w_ratio = float(width)/old_width
+        h_ratio = float(height)/old_height
+        ratio = min(w_ratio, h_ratio)
+        new_size = (int(ratio*old_width), int(ratio*old_height))
+        img = img.resize(new_size, Image.ANTIALIAS)
+        new_img = Image.new("RGB", (width, height))
+        new_img.paste(img, ((width-new_size[0])//2, (height-new_size[1])//2))
+        return new_img
 
 ### train the net below
 if __name__ == "__main__":
