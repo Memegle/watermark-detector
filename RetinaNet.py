@@ -29,7 +29,7 @@ class RetinaNet():
     """
     Helper method for training
     """
-    def __resize_image(self, img_path, width=200, height=200):
+    def __resize_image(self, img_path, width=224, height=224):
         img = Image.open(img_path)
         old_width, old_height = img.size
         w_ratio = float(width)/old_width
