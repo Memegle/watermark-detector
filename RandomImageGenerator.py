@@ -50,11 +50,21 @@ class RandomImageGenerator():
             yield image
 
     def __text_generator(self, dictionary):
-            length = randint(4, 12)
-            text = "".join([dictionary[randint(0, len(dictionary) - 1)] for i in range(length)])
-            return text
+        length = randint(4, 12)
+        text = "".join([dictionary[randint(0, len(dictionary) - 1)] for i in range(length)])
+        return text
+    
+    def __watermark_generator(self):
+        filepath = "data/random_image_generator_resource/watermarks/"
+        image_lst = os.listdir(filepath)
+        # Watermark iterator
+        while True:
+            image_id = sample(image_lst, 1)[0]
+            image_path = "".join([filepath, image_id])
+            image = Image.open(image_path)
+            yield image
 
-    def __add_text_to_image(self, mode, image, text):
+    def __add_text_to_image(self, mode, image, text, place):
         
         if mode == "ch":
             fontpath = "./simsun.ttc"  # 宋体
@@ -90,9 +100,12 @@ class RandomImageGenerator():
         image_draw = ImageDraw.Draw(text_overlay)
 
         text_size_x, text_size_y = image_draw.textsize(text, font=font)
-        # Random Place
-        top_left_corner_x = randint(0, int(rgba_image.size[0] // size_factor - text_size_x))
-        top_left_corner_y = randint(0, int(rgba_image.size[1] // size_factor - text_size_y))
+        if place=="random":
+            top_left_corner_x = randint(0, int(rgba_image.size[0] // size_factor - text_size_x))
+            top_left_corner_y = randint(0, int(rgba_image.size[1] // size_factor - text_size_y))
+        elif place=="corner":
+            top_left_corner_x = rgba_image.size[0] // size_factor - text_size_x
+            top_left_corner_y = rgba_image.size[1] // size_factor - text_size_y
         text_xy = (top_left_corner_x, top_left_corner_y)
 
         # Random Color and Transparency (up to a reasonable range)
@@ -118,29 +131,63 @@ class RandomImageGenerator():
 
         return image_with_text
 
-    def english_generator(self):
+    def __add_watermark_to_image(self, image, watermark):
+        rgba_image = image.convert('RGBA')
+        rgba_watermark = watermark.convert('RGBA')
+  
+        image_x, image_y = rgba_image.size
+        watermark_x, watermark_y = rgba_watermark.size
+  
+        scale = randint(8, 12)
+        watermark_scale = max(image_x / (scale * watermark_x), image_y / (scale * watermark_y))
+        new_size = (int(watermark_x * watermark_scale), int(watermark_y * watermark_scale))
+        rgba_watermark = rgba_watermark.resize(new_size, resample=Image.ANTIALIAS)
+        rgba_watermark_mask = rgba_watermark.convert("L").point(lambda x: min(x, 180))
+        rgba_watermark.putalpha(rgba_watermark_mask)
+  
+        watermark_x, watermark_y = rgba_watermark.size
+
+        if random() > 0.5: # Random half
+            rgba_image.paste(rgba_watermark, (image_x - watermark_x, image_y - watermark_y), rgba_watermark_mask) # bot-right
+        else:
+            rgba_image.paste(rgba_watermark, (image_x - watermark_x, 0), rgba_watermark_mask) # top-right
+  
+        return rgba_image
+
+    def english_generator(self, place="random"):
+        if place not in ["random", "corner"]:
+            raise ValueError
         for image in tqdm(self.images):
             text = self.__text_generator(self.english_char)
-            processed_image = self.__add_text_to_image("en", image, text)
+            processed_image = self.__add_text_to_image("en", image, text, mode)
             processed_image.save("{}/{}.{}".format(self.output_path, self.output_label, self.output_type))
             self.output_label += 1
         print("DONE")
             
-    def chinese_generator(self):
+    def chinese_generator(self, place="random"):
+        if place not in ["random", "corner"]:
+            raise ValueError
         for image in tqdm(self.images):
             text = self.__text_generator(self.chinese_char)
-            processed_image = self.__add_text_to_image("ch", image, text)
+            processed_image = self.__add_text_to_image("ch", image, text, mode)
             processed_image.save("{}/{}.{}".format(self.output_path, self.output_label, self.output_type))
             self.output_label += 1
         print("DONE")
     
-    def ascii_generator(self):
+    def ascii_generator(self, place="random"):
+        if place not in ["random", "corner"]:
+            raise ValueError
         for image in tqdm(self.images):
             text = self.__text_generator(self.ascii_char)
-            processed_image = self.__add_text_to_image("asc", image, text)
+            processed_image = self.__add_text_to_image("asc", image, text, place)
             processed_image.save("{}/{}.{}".format(self.output_path, self.output_label, self.output_type))
             self.output_label += 1
         print("DONE")
 
     def image_generator(self):
-        print("NOT IMPLEMENTED YET!")
+        watermarks = self.__watermark_generator()
+        for image in tqdm(self.images):
+            processed_image = self.__add_watermark_to_image(image, next(watermarks))
+            processed_image.save("{}/{}.{}".format(self.output_path, self.output_label, self.output_type))
+            self.output_label += 1
+        print("DONE")
