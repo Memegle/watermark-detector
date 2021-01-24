@@ -8,14 +8,14 @@ from retinanet.py import RetinaNet
 from decodepred.py import DecodePredictions
 from loss.py import RetinaNetBoxLoss
 from labelencoder.py import LabelEncoder
-from Anchorbox import AnchorBox
+from anchorbox.py import AnchorBox
 
 def load_label(url):
   """Load labels for the data in google drive, 
     change into corresponding format in retinanet, 
     pass into labelencoder.py
 
-  Arguments: 
+  Arguments:  
     url: The url of the google drive
 
   Returns: 
@@ -160,6 +160,19 @@ def resize_and_pad_image(
     )
     return image, image_shape, ratio
 
+'''
+    def __resize_image(self, img_path, width=224, height=224):
+        img = Image.open(img_path)
+        old_width, old_height = img.size
+        w_ratio = float(width)/old_width
+        h_ratio = float(height)/old_height
+        ratio = min(w_ratio, h_ratio)
+        new_size = (int(ratio*old_width), int(ratio*old_height))
+        img = img.resize(new_size, Image.ANTIALIAS)
+        new_img = Image.new("RGB", (width, height))
+        new_img.paste(img, ((width-new_size[0])//2, (height-new_size[1])//2))
+        return new_img
+'''
 
 def preprocess_data(sample):
     """Applies preprocessing step to a single sample
@@ -235,4 +248,5 @@ def build_head(output_filters, bias_init):
         )
     )
     return head
+
 

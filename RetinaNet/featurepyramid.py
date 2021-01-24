@@ -2,6 +2,7 @@ import tensorflow as tf
 import keras
 import cv2
 from main.py import get_backbone
+
 class FeaturePyramid(keras.layers.Layer):
     """Builds the Feature Pyramid with the feature maps from the backbone.
 
