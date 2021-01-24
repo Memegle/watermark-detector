@@ -9,15 +9,6 @@ from decodepred.py import DecodePredictions
 from loss.py import RetinaNetBoxLoss
 from labelencoder.py import LabelEncoder
 from Anchorbox import AnchorBox
-def load_data(url): 
-  """Load dataset from google drive
-
-  Arugments: 
-    url: The url of the google drive
-
-  Returns:
-    dataloaders that contains pictures
-  """
 
 def load_label(url):
   """Load labels for the data in google drive, 
@@ -30,7 +21,7 @@ def load_label(url):
   Returns: 
     labels in the format that can put into labelencoder.py
   """
-  
+
 def swap_xy(boxes):
     """Swaps order the of x and y coordinates of the boxes.
 
