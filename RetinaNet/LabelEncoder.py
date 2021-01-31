@@ -1,7 +1,7 @@
 import tensorflow as tf 
 import keras
 import cv2
-from Anchorbox.py import AnchorBox
+from Anchorbox import AnchorBox
 
 class LabelEncoder:
     """Transforms the raw labels into targets for training.
