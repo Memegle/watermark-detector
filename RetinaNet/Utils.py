@@ -41,7 +41,7 @@ class Utils:
        Returns:
           converted boxes with shape same as that of boxes.
        """
-        return tf.concat(
+       return tf.concat(
            [(boxes[..., :2] + boxes[..., 2:]) / 2.0, boxes[..., 2:] - boxes[..., :2]],
            axis=-1,
        )
