@@ -1,6 +1,8 @@
 import tensorflow as tf 
 import keras
 import cv2
+from AnchorBox import AnchorBox
+from Utils import *
 
 class DecodePredictions(tf.keras.layers.Layer):
     """A Keras layer that decodes predictions of the RetinaNet model.
@@ -20,11 +22,11 @@ class DecodePredictions(tf.keras.layers.Layer):
 
     def __init__(
         self,
-        num_classes=80,
+        num_classes=2,
         confidence_threshold=0.05,
         nms_iou_threshold=0.5,
-        max_detections_per_class=100,
-        max_detections=100,
+        max_detections_per_class=5,
+        max_detections=5,
         box_variance=[0.1, 0.1, 0.2, 0.2],
         **kwargs
     ):
