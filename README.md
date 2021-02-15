@@ -1,0 +1,3 @@
+# watermark-detector
+
+For now, go to our memegle google drive to download the zip file...
