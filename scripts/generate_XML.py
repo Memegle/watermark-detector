@@ -5,7 +5,9 @@ from PIL import Imagefrom google.colab import drive
 import os
 import patoolib
 
-def load_data(): 
+def load_data():
+    if not os.path.isdir("image_dir"):
+        os.mkdir("image_dir")
     drive.mount('/content/drive')
     ## the file path in my google drive, may need to change
     file_path = "/content/drive/Shareddrives/Memegle/database/watermark-training"
