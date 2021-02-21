@@ -2,23 +2,10 @@
 
 A computer vision component of Memegle to classify the existence of watermarks
 
-### RetinaNet.py
+## Order of execution:
 
-Codes to train a neural network that performs the task of watermark detection
-
-### WatermarkDetectron.py
-
-Codes to execute our trained model on predicting the watermark status of incoming images
-
-### RandomImageGenerator.py
-
-Codes to generate images with random artificial watermarks for supplemental training/testing
-
-### data
-#### images
-
-Some demo images for functionality checks in WatermarkDetectron.py
-
-#### model_saved
-
-Place to save trained parameters of the RetinaNet
+1. Go to *root dir*.
+2. Run `scripts/setup_envorinment.sh`
+3. Manually download `resnet50_coco_best_v2.1.0.h5` from Memegle google drive, under `database/watermark-starter-file`, paste that under `retinanet_keras/model_data` (need to write automation code later)
+4. Run `scripts/train.sh`
+5. After finished everything, run `scripts/clean_up.sh`
