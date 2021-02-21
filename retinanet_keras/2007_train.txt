@@ -1,0 +1,88 @@
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/2007_000027.jpg
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/2007_000032.jpg
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/2007_000033.jpg
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/2007_000039.jpg
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/2007_000042.jpg
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/2007_000061.jpg
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/2007_000063.jpg
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/2007_000068.jpg
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/2007_000121.jpg
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/2007_000123.jpg
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/2007_000129.jpg
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/2007_000170.jpg
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/2007_000175.jpg
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/2007_000187.jpg
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/2007_000241.jpg
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/2007_000243.jpg
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/2007_000250.jpg
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/2007_000256.jpg
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/2007_000272.jpg
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/2007_000323.jpg
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/2007_000332.jpg
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/2007_000333.jpg
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/2007_000346.jpg
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/2007_000363.jpg
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/2007_000364.jpg
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/2007_000392.jpg
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/2007_000423.jpg
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/2007_000452.jpg
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/2007_000464.jpg
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/2007_000480.jpg
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/2007_000491.jpg
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/2007_000504.jpg
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/2007_000515.jpg
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/2007_000528.jpg
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/2007_000529.jpg
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/2007_000549.jpg
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/2007_000559.jpg
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/2007_000572.jpg
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/2007_000584.jpg
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/2007_000629.jpg
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/600000.jpg 237,366,128,31,0
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/600001.jpg 365,260,158,39,0
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/600002.jpg 185,189,134,33,0
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/600003.jpg 255,136,135,33,0
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/600004.jpg 302,264,139,34,0
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/600005.jpg 140,137,120,30,0
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/600006.jpg 141,355,117,29,0
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/600007.jpg 383,36,102,26,0
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/600008.jpg 312,271,107,26,0
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/600009.jpg 107,102,107,26,0
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/600010.jpg 48,376,80,19,0
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/600011.jpg 86,92,150,38,0
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/600012.jpg 299,234,150,38,0
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/600013.jpg 366,330,108,26,0
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/600014.jpg 191,145,164,41,0
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/600015.jpg 195,50,137,34,0
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/600016.jpg 265,178,117,29,0
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/600017.jpg 363,149,110,28,0
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/600018.jpg 198,179,74,18,0
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/600019.jpg 352,320,136,33,0
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/600020.jpg 398,102,130,32,0
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/600021.jpg 66,78,118,30,0
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/600022.jpg 341,39,107,26,0
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/600023.jpg 317,234,131,33,0
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/600024.jpg 240,111,101,24,0
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/614936.jpg 240,242,270,75,0
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/614937.jpg 140,322,180,50,0
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/614938.jpg 106,344,182,52,0
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/614939.jpg 155,172,169,47,0
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/614940.jpg 192,285,214,59,0
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/614941.jpg 268,191,200,56,0
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/614942.jpg 259,165,183,52,0
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/614943.jpg 399,338,191,53,0
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/614944.jpg 140,65,135,37,0
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/614945.jpg 247,32,175,50,0
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/614946.jpg 339,328,237,66,0
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/614947.jpg 270,67,234,65,0
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/614948.jpg 215,444,174,48,0
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/614949.jpg 181,101,170,47,0
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/614950.jpg 355,207,179,50,0
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/614951.jpg 211,137,179,50,0
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/614952.jpg 210,212,254,72,0
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/614953.jpg 202,308,161,45,0
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/614954.jpg 139,129,256,71,0
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/614955.jpg 315,110,218,60,0
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/614956.jpg 152,71,144,41,0
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/614957.jpg 276,327,134,37,0
+E:\watermark-detector\retinanet_keras/VOCdevkit/VOC2007/JPEGImages/614958.jpg 356,253,179,50,0
