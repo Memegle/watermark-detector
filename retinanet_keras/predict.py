@@ -7,20 +7,26 @@ predict.py有几个注意点
 '''
 from keras.layers import Input
 from PIL import Image
+import os
 
 from retinanet import Retinanet
 
 retinanet = Retinanet()
 
-while True:
-    img = input('Input image filename:')
+predictions = open("predictions.txt", 'w')
+folder_path = 'predict_images/'
+entries = os.listdir(folder_path)
+for img in entries:
+    img_path = folder_path + img
     try:
-        image = Image.open(img)
+        image = Image.open(img_path)
     except:
         print('Open Error! Try again!')
         continue
     else:
-        r_image = retinanet.detect_image(image)
-        r_image.show()
+        r_image, detection_output = retinanet.detect_image(image)
+        #r_image.show()
+        predictions.write(img + ", " + str(detection_output) + "\n")
+predictions.close()
 retinanet.close_session()
     
