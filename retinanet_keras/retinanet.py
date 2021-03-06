@@ -22,8 +22,8 @@ from utils.utils import BBoxUtility, letterbox_image, retinanet_correct_boxes
 #--------------------------------------------#
 class Retinanet(object):
     _defaults = {
-        "model_path"        : 'model_data/resnet50_coco_best_v2.1.0.h5',
-        "classes_path"      : 'model_data/coco_classes.txt',
+        "model_path"        : 'retinanet_keras/logs/ep001-loss0.040-val_loss0.010.h5',
+        "classes_path"      : 'retinanet_keras/model_data/coco_classes.txt',
         "model_image_size"  : (200, 200, 3),
         "confidence"        : 0.5,
         "iou"               : 0.3,
@@ -120,7 +120,7 @@ class Retinanet(object):
         #   如果没有检测到物体，则返回原图
         #--------------------------------------#
         if len(results[0])<=0:
-            return image
+            return image, False
         results = np.array(results)
 
         det_label = results[0][:, 5]
@@ -163,7 +163,7 @@ class Retinanet(object):
             draw = ImageDraw.Draw(image)
             label_size = draw.textsize(label, font)
             label = label.encode('utf-8')
-            print(label, top, left, bottom, right)
+            #print(label, top, left, bottom, right)
             
             if top - label_size[1] >= 0:
                 text_origin = np.array([left, top - label_size[1]])
@@ -179,7 +179,7 @@ class Retinanet(object):
                 fill=self.colors[int(c)])
             draw.text(text_origin, str(label,'UTF-8'), fill=(0, 0, 0), font=font)
             del draw
-        return image
+        return image, True
 
     def close_session(self):
         self.sess.close()
