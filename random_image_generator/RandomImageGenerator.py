@@ -1,8 +1,16 @@
 import os
+import xml.etree.ElementTree as ET
+import pickle
+from os import listdir, getcwd
+from os.path import join
+import shutil
+
 
 from PIL import Image, ImageDraw, ImageFont
 from random import randint, random, sample
 from tqdm import tqdm
+
+import csv
 
 class RandomImageGenerator():
 
@@ -103,11 +111,23 @@ class RandomImageGenerator():
         if place=="random":
             top_left_corner_x = randint(0, int(rgba_image.size[0] // size_factor - text_size_x))
             top_left_corner_y = randint(0, int(rgba_image.size[1] // size_factor - text_size_y))
+            
+                   
         elif place=="corner":
             top_left_corner_x = rgba_image.size[0] // size_factor - text_size_x
             top_left_corner_y = rgba_image.size[1] // size_factor - text_size_y
         text_xy = (top_left_corner_x, top_left_corner_y)
-
+        
+# output --> txt
+        with open('123.txt', 'wb') as f:
+            csv.writer(f, delimiter=' ').writerows((0,0))
+        if  text_size_x < top_left_corner_x & text_size_y<top_left_corner_y:
+            with open('123.txt', 'wb') as f:
+                csv.writer(f, delimiter=' ').writerows((text_size_x,text_size_y))
+        else:
+            with open('123.txt', 'wb') as f:
+                csv.writer(f, delimiter=' ').writerows(text_xy)
+            
         # Random Color and Transparency (up to a reasonable range)
         sample_color = rgba_image.getpixel((  # Tuple
             int((top_left_corner_x + 0.5 * text_size_x) * size_factor),
