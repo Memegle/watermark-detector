@@ -50,45 +50,55 @@ def main():
     class_dict = json.load(json_file)
     category_index = {v: k for k, v in class_dict.items()}
 
-    # load image
-    original_img = Image.open("./test.jpg")
+    prediction_file = open("predictions.txt", 'w')
+    folder_path = 'test_images/'
+    entries = os.listdir(folder_path)
+    for img_name in entries:
+        img_path = folder_path + img_name
+        # load image
+        original_img = Image.open(img_path)
 
-    # from pil image to tensor, do not normalize image
-    data_transform = transforms.Compose([transforms.ToTensor()])
-    img = data_transform(original_img)
-    # expand batch dimension
-    img = torch.unsqueeze(img, dim=0)
+        # from pil image to tensor, do not normalize image
+        data_transform = transforms.Compose([transforms.ToTensor()])
+        img = data_transform(original_img)
+        # expand batch dimension
+        img = torch.unsqueeze(img, dim=0)
 
-    model.eval()  # 进入验证模式
-    with torch.no_grad():
-        # init
-        img_height, img_width = img.shape[-2:]
-        init_img = torch.zeros((1, 3, img_height, img_width), device=device)
-        model(init_img)
+        model.eval()  # 进入验证模式
+        with torch.no_grad():
+            # init
+            img_height, img_width = img.shape[-2:]
+            init_img = torch.zeros((1, 3, img_height, img_width), device=device)
+            model(init_img)
 
-        t_start = time_synchronized()
-        predictions = model(img.to(device))[0]
-        t_end = time_synchronized()
-        print("inference+NMS time: {}".format(t_end - t_start))
+            t_start = time_synchronized()
+            predictions = model(img.to(device))[0]
+            t_end = time_synchronized()
+            print("inference+NMS time: {}".format(t_end - t_start))
 
-        predict_boxes = predictions["boxes"].to("cpu").numpy()
-        predict_classes = predictions["labels"].to("cpu").numpy()
-        predict_scores = predictions["scores"].to("cpu").numpy()
+            predict_boxes = predictions["boxes"].to("cpu").numpy()
+            predict_classes = predictions["labels"].to("cpu").numpy()
+            predict_scores = predictions["scores"].to("cpu").numpy()
 
-        if len(predict_boxes) == 0:
-            print("没有检测到任何目标!")
-        print(predict_boxes)
-        draw_box(original_img,
-                 predict_boxes,
-                 predict_classes,
-                 predict_scores,
-                 category_index,
-                 thresh=0.4,
-                 line_thickness=3)
-        plt.imshow(original_img)
-        plt.show()
-        # 保存预测的图片结果
-        original_img.save("test_result.jpg")
+            if len(predict_boxes) == 0:
+                print("没有检测到任何目标!")
+                prediction_file.write(img_name + ", " + str(False) + "\n")
+            else:
+                prediction_file.write(img_name + ", " + str(True) + "\n")
+            '''print(predict_boxes)
+            draw_box(original_img,
+                    predict_boxes,
+                    predict_classes,
+                    predict_scores,
+                    category_index,
+                    thresh=0.4,
+                    line_thickness=3)
+            plt.imshow(original_img)
+            plt.show()
+            # 保存预测的图片结果
+            original_img.save("test_result.jpg")
+            '''
+    prediction_file.close()
 
 
 if __name__ == '__main__':
