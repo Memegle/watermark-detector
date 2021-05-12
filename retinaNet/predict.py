@@ -35,7 +35,7 @@ def main():
 
     # create model
     # 注意：不包含背景
-    model = create_model(num_classes=4)
+    model = create_model(num_classes=1)
 
     # load train weights
     train_weights = "./save_weights/model.pth"
