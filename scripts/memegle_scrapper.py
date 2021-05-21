@@ -4,7 +4,7 @@ from os.path import exists, isdir, isfile, join, abspath
 from os import mkdir
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-o', '--output_dir', default='./internal-data/')
+parser.add_argument('-o', '--output_dir', default='../data/original_images')
 parser.add_argument('-i', '--start_index', default='0')
 args = parser.parse_args()
 
@@ -20,7 +20,7 @@ if not isdir(DOWNLOAD_FOLDER):
 
 with urllib.request.urlopen(URL) as url:
     data = json.loads(url.read().decode())
-    for i in range(START_INDEX, len(data)):
+    for i in range(START_INDEX, 200):#len(data)):
         img = data[i]
         try: 
             TIMES_RUN += 1
