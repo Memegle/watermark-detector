@@ -137,6 +137,14 @@ def main(parser_data):
             'lr_scheduler': lr_scheduler.state_dict(),
             'epoch': epoch}
         torch.save(save_files, "./save_weights/resNetFpn-model-{}.pth".format(epoch))
+    
+    # Final model
+    save_files = {
+            'model': model.state_dict(),
+            'optimizer': optimizer.state_dict(),
+            'lr_scheduler': lr_scheduler.state_dict(),
+            'epoch': epoch}
+        torch.save(save_files, "./save_weights/model.pth")
 
     # plot loss and lr curve
     if len(train_loss) != 0 and len(learning_rate) != 0:

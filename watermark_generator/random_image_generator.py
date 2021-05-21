@@ -139,12 +139,12 @@ class RandomImageGenerator():
         image_x, image_y = rgba_image.size
         watermark_x, watermark_y = rgba_watermark.size
   
-        scale = randint(8, 12)
+        scale = randint(4, 8)
         watermark_scale = max(image_x / (scale * watermark_x), image_y / (scale * watermark_y))
         new_size = (int(watermark_x * watermark_scale), int(watermark_y * watermark_scale))
         rgba_watermark = rgba_watermark.resize(new_size, resample=Image.ANTIALIAS)
         rgba_watermark_mask = rgba_watermark.convert("L").point(lambda x: min(x, 180))
-        rgba_watermark.putalpha(rgba_watermark_mask)
+        #rgba_watermark.putalpha(rgba_watermark_mask)
   
         watermark_x, watermark_y = rgba_watermark.size
 
