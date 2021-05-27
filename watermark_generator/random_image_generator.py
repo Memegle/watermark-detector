@@ -95,7 +95,7 @@ class RandomImageGenerator():
         text_overlay = Image.new(
             'RGBA', 
             (int(rgba_image.size[0] // size_factor), int(rgba_image.size[1] // size_factor)), 
-            (0, 0, 0, 0)
+            (255, 255, 255, 0)
         )
         image_draw = ImageDraw.Draw(text_overlay)
 
@@ -105,12 +105,6 @@ class RandomImageGenerator():
             top_left_corner_y = randint(0, int(rgba_image.size[1] // size_factor - text_size_y))
         elif place=="corner":
             top_left_corner_x = rgba_image.size[0] // size_factor - text_size_x
-            top_left_corner_y = rgba_image.size[1] // size_factor - text_size_y
-        elif place=="center": 
-            top_left_corner_x = (rgba_image.size[0] // size_factor - text_size_x) // 2
-            top_left_corner_y = (rgba_image.size[1] // size_factor - text_size_y) // 2
-        elif place=="bottom": 
-            top_left_corner_x = (rgba_image.size[0] // size_factor - text_size_x) // 2
             top_left_corner_y = rgba_image.size[1] // size_factor - text_size_y
 
         text_xy = (top_left_corner_x, top_left_corner_y)
