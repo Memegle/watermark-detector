@@ -1,17 +1,22 @@
 # watermark-detector
 
-Not official one, for my own use now:
+### Instructions
 
-1. Download resnet50 backbone, link found in train.py
+#### Training
 
-2. Install related packages (see requirements.txt)
+1. Download resnet50 backbone from Memegle google drive at `Memegle/database/watermark-detector-related-data/retinanet_resnet50_fpn.pth`. Put this backbone in `./retinaNet/backbone/`.
 
-3. Download clean images from database, put in data/original_images
+2. Download watermark logos from Memegle google drive at `Memegle/databse/watermark-detector-related-data/watermark-logos/`. Put them in `./watermark_generator/watermarks`.
 
-4. Set route to watermark_generator, run random_image_generator.py (default to image watermarks for now), then run generate_XML.py
+3. Install related packages as per missing requirements (TODO: generate a `requirements.txt`).
 
-5. Go to data/VOCdefkit/VOC2012/ImageSets/Main, open trainval.txt, do a manual train-val split, paste to corresponding files. (Need automation later)
+4. Run the following code: `cd scripts`, then `bash ./train_from_scratch.sh`.
 
-6. Go to retinaNet, run train.py.
 
-7. Run test.py with any testing image called 'test.jpg'. (Need automation for scalable output)
+#### Predicting
+
+1. Put testing images under `./data/test_images/`.
+
+2. Run the following code: `cd retinaNet`, then `python3 predict.py`.
+
+3. See the predictions in `./data/predictions.txt`.

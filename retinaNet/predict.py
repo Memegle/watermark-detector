@@ -50,8 +50,8 @@ def main():
     class_dict = json.load(json_file)
     category_index = {v: k for k, v in class_dict.items()}
 
-    prediction_file = open("predictions.txt", 'w')
-    folder_path = 'test_images/'
+    prediction_file = open("../data/predictions.txt", 'w')
+    folder_path = '../data/test_images/'
     entries = os.listdir(folder_path)
     for img_name in entries:
         img_path = folder_path + img_name
@@ -80,24 +80,11 @@ def main():
             predict_classes = predictions["labels"].to("cpu").numpy()
             predict_scores = predictions["scores"].to("cpu").numpy()
 
-            if len(predict_boxes) == 0:
-                print("没有检测到任何目标!")
+            if len(predict_boxes) == 0 or max(predict_scores) < 0.6:  # Can change this value for trade-off between AP and Recall
                 prediction_file.write(img_name + ", " + str(False) + "\n")
             else:
                 prediction_file.write(img_name + ", " + str(True) + "\n")
-            '''print(predict_boxes)
-            draw_box(original_img,
-                    predict_boxes,
-                    predict_classes,
-                    predict_scores,
-                    category_index,
-                    thresh=0.4,
-                    line_thickness=3)
-            plt.imshow(original_img)
-            plt.show()
-            # 保存预测的图片结果
-            original_img.save("test_result.jpg")
-            '''
+                
     prediction_file.close()
 
 
