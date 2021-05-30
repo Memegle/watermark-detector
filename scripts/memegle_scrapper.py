@@ -5,7 +5,7 @@ from os import mkdir
 import random
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-o', '--output_dir', default='./internal-data/')
+parser.add_argument('-o', '--output_dir', default='../data/original_images')
 parser.add_argument('-i', '--start_index', default='0')
 parser.add_argument('-n', '--num_pics', default='0')
 args = parser.parse_args()
