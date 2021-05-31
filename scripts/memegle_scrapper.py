@@ -8,6 +8,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('-o', '--output_dir', default='../data/original_images')
 parser.add_argument('-i', '--start_index', default='0')
 parser.add_argument('-n', '--num_pics', default='0')
+parser.add_argument('-r', '--random_pics', default='no')
 args = parser.parse_args()
 
 DOWNLOAD_FOLDER = abspath(args.output_dir)
@@ -15,6 +16,7 @@ URL = "https://memegle.live:8080/all"
 TIMES_RUN = 0
 START_INDEX = int(args.start_index)
 NUM_PICS = int(args.num_pics)
+RANDOM = (args.random_pics=='yes')
 success = 0
 
 def download_img(data, ind):
@@ -39,11 +41,14 @@ if not isdir(DOWNLOAD_FOLDER):
 
 with urllib.request.urlopen(URL) as url:
     data = json.loads(url.read().decode())
-    if NUM_PICS != 0:
+    if (NUM_PICS != 0) and RANDOM:
         randNums = set()
         while (len(randNums) < NUM_PICS):
             randNums.add(random.randint(0, len(data)))
         for i in randNums:
+            download_img(data, i)
+    elif (NUM_PICS != 0):
+        for i in range(START_INDEX, START_INDEX+NUM_PICS):
             download_img(data, i)
     else:        
         for i in range(START_INDEX, len(data)):
