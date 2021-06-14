@@ -106,6 +106,7 @@ class RandomImageGenerator():
         elif place=="corner":
             top_left_corner_x = rgba_image.size[0] // size_factor - text_size_x
             top_left_corner_y = rgba_image.size[1] // size_factor - text_size_y
+
         text_xy = (top_left_corner_x, top_left_corner_y)
 
         # Random Color and Transparency (up to a reasonable range)
@@ -148,16 +149,22 @@ class RandomImageGenerator():
   
         watermark_x, watermark_y = rgba_watermark.size
 
-        if random() > 0.5: # Random half
+        if random() > 0.25: # Random half
             rgba_image.paste(rgba_watermark, (image_x - watermark_x, image_y - watermark_y), rgba_watermark_mask) # bot-right
             bbox = [str(image_x - watermark_x), str(image_x), str(image_y - watermark_y), str(image_y)]
-        else:
+        elif random() > 0.5:
             rgba_image.paste(rgba_watermark, (image_x - watermark_x, 0), rgba_watermark_mask) # top-right
+            bbox = [str(image_x - watermark_x), str(image_x), str(0), str(watermark_y)]
+        elif random() > 0.75:
+            rgba_image.paste(rgba_watermark, ((image_x - watermark_x)//2, (image_y - watermark_y)//2), rgba_watermark_mask) # top-right
+            bbox = [str(image_x - watermark_x), str(image_x), str(0), str(watermark_y)]
+        else: 
+            rgba_image.paste(rgba_watermark, ((image_x - watermark_x)//2, image_y - watermark_y), rgba_watermark_mask) # top-right
             bbox = [str(image_x - watermark_x), str(image_x), str(0), str(watermark_y)]
         return rgba_image, bbox
 
     def english_generator(self, place="random"):
-        if place not in ["random", "corner"]:
+        if place not in ["random", "corner", "center", "bottom"]:
             raise ValueError
         for image in tqdm(self.images):
             text = self.__text_generator(self.english_char)
@@ -169,7 +176,7 @@ class RandomImageGenerator():
         print("DONE")
             
     def chinese_generator(self, place="random"):
-        if place not in ["random", "corner"]:
+        if place not in ["random", "corner", "center", "bottom"]:
             raise ValueError
         for image in tqdm(self.images):
             text = self.__text_generator(self.chinese_char)
@@ -181,7 +188,7 @@ class RandomImageGenerator():
         print("DONE")
     
     def ascii_generator(self, place="random"):
-        if place not in ["random", "corner"]:
+        if place not in ["random", "corner", "center", "bottom"]:
             raise ValueError
         for image in tqdm(self.images):
             text = self.__text_generator(self.ascii_char)
