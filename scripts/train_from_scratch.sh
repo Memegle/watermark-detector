@@ -17,7 +17,7 @@ mkdir ../data/VOCdevkit/VOC2012/JPEGImages
 mkdir ../retinaNet/save_weights
 
 # Download Memes from DB
-python3 memegle_scrapper.py
+python3 memegle_scrapper.py -n 1000
 
 # Attach Watermarks
 cd ../watermark_generator

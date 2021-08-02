@@ -12,7 +12,7 @@ parser.add_argument('-r', '--random_pics', action='store_true')
 args = parser.parse_args()
 
 DOWNLOAD_FOLDER = abspath(args.output_dir)
-URL = "https://memegle.live:8080/all"
+URL = "http://50.18.236.12:8080/all"
 TIMES_RUN = 0
 START_INDEX = int(args.start_index)
 NUM_PICS = int(args.num_pics)

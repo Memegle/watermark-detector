@@ -47,6 +47,8 @@ class RandomImageGenerator():
         for image_id in image_lst:
             image_path = "".join([filepath, image_id])
             image = Image.open(image_path)
+            if image_path[-4:] == ".gif": # Take the first frame of gifs as static images
+                image.seek(0)
             yield image
 
     def __text_generator(self, dictionary):
@@ -140,7 +142,7 @@ class RandomImageGenerator():
         image_x, image_y = rgba_image.size
         watermark_x, watermark_y = rgba_watermark.size
   
-        scale = randint(4, 8)
+        scale = randint(2, 9)
         watermark_scale = max(image_x / (scale * watermark_x), image_y / (scale * watermark_y))
         new_size = (int(watermark_x * watermark_scale), int(watermark_y * watermark_scale))
         rgba_watermark = rgba_watermark.resize(new_size, resample=Image.ANTIALIAS)
@@ -149,17 +151,17 @@ class RandomImageGenerator():
   
         watermark_x, watermark_y = rgba_watermark.size
 
-        if random() > 0.25: # Random half
+        if random() > 0.20:
             rgba_image.paste(rgba_watermark, (image_x - watermark_x, image_y - watermark_y), rgba_watermark_mask) # bot-right
             bbox = [str(image_x - watermark_x), str(image_x), str(image_y - watermark_y), str(image_y)]
-        elif random() > 0.5:
+        elif random() > 0.40:
             rgba_image.paste(rgba_watermark, (image_x - watermark_x, 0), rgba_watermark_mask) # top-right
             bbox = [str(image_x - watermark_x), str(image_x), str(0), str(watermark_y)]
-        elif random() > 0.75:
-            rgba_image.paste(rgba_watermark, ((image_x - watermark_x)//2, (image_y - watermark_y)//2), rgba_watermark_mask) # top-right
+        elif random() > 0.70:
+            rgba_image.paste(rgba_watermark, ((image_x - watermark_x)//2, (image_y - watermark_y)//2), rgba_watermark_mask) # center
             bbox = [str(image_x - watermark_x), str(image_x), str(0), str(watermark_y)]
         else: 
-            rgba_image.paste(rgba_watermark, ((image_x - watermark_x)//2, image_y - watermark_y), rgba_watermark_mask) # top-right
+            rgba_image.paste(rgba_watermark, ((image_x - watermark_x)//2, image_y - watermark_y), rgba_watermark_mask) # bot-center
             bbox = [str(image_x - watermark_x), str(image_x), str(0), str(watermark_y)]
         return rgba_image, bbox
 
@@ -171,7 +173,7 @@ class RandomImageGenerator():
             processed_image, bbox = self.__add_text_to_image("en", image, text, place)
             processed_image.save("{}/{}.{}".format(self.output_path, self.output_label, self.output_type))
             with open("{}/{}.txt".format(self.output_path, self.output_label), "w") as f:
-                f.write(", ".join(bbox))
+                f.write(" ".join(bbox))
             self.output_label += 1
         print("DONE")
             
@@ -183,7 +185,7 @@ class RandomImageGenerator():
             processed_image, bbox = self.__add_text_to_image("ch", image, text, place)
             processed_image.save("{}/{}.{}".format(self.output_path, self.output_label, self.output_type))
             with open("{}/{}.txt".format(self.output_path, self.output_label), "w") as f:
-                f.write(", ".join(bbox))
+                f.write(" ".join(bbox))
             self.output_label += 1
         print("DONE")
     
@@ -195,7 +197,7 @@ class RandomImageGenerator():
             processed_image, bbox = self.__add_text_to_image("asc", image, text, place)
             processed_image.save("{}/{}.{}".format(self.output_path, self.output_label, self.output_type))
             with open("{}/{}.txt".format(self.output_path, self.output_label), "w") as f:
-                f.write(", ".join(bbox))
+                f.write(" ".join(bbox))
             self.output_label += 1
         print("DONE")
 
@@ -212,3 +214,5 @@ class RandomImageGenerator():
 if __name__ == "__main__":
     rig = RandomImageGenerator()
     rig.image_generator()
+    rig = RandomImageGenerator(count=2000)
+    rig.english_generator("corner")
